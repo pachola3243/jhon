@@ -6,7 +6,6 @@
     <title>Os Melhores Filmes do Mundo</title>
     <link rel="stylesheet" href="style2.css">
     <style>
-        /* Estilo simples para o botão de trailer (caso não tenha no seu CSS) */
         .btn-trailer {
             display: inline-block;
             margin-top: 15px;
@@ -22,6 +21,14 @@
             background-color: #f40612;
             transform: scale(1.05);
         }
+        .filme h2 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .filme h2 a:hover {
+            text-decoration: underline;
+            color: #e50914;
+        }
     </style>
 </head>
 <body>
@@ -34,18 +41,17 @@
 
         <h2>🏆 Top 5 Melhores Filmes</h2>
         <ol>
-            <li>O Poderoso Chefão (1972)</li>
-            <li>Um Sonho de Liberdade (1994)</li>
-            <li>O Cavaleiro das Trevas (2008)</li>
-            <li>A Lista de Schindler (1993)</li>
-            <li>12 Homens e uma Sentença (1957)</li>
+            <li><a href="https://www.imdb.com/title/tt0068646/" target="_blank">O Poderoso Chefão (1972)</a></li>
+            <li><a href="https://www.imdb.com/title/tt0111161/" target="_blank">Um Sonho de Liberdade (1994)</a></li>
+            <li><a href="https://www.imdb.com/title/tt0468569/" target="_blank">O Cavaleiro das Trevas (2008)</a></li>
+            <li><a href="https://www.imdb.com/title/tt0108052/" target="_blank">A Lista de Schindler (1993)</a></li>
+            <li><a href="https://www.imdb.com/title/tt0050083/" target="_blank">12 Homens e uma Sentença (1957)</a></li>
         </ol>
 
         <h2>Detalhes dos Filmes</h2>
 
-        <!-- Filme 1 -->
         <div class="filme fade-in">
-            <h2>1. O Poderoso Chefão</h2>
+            <h2><a href="https://www.imdb.com/title/tt0068646/" target="_blank">1. O Poderoso Chefão</a></h2>
             <p><strong>Diretor:</strong> Francis Ford Coppola • <strong>Ano:</strong> 1972</p>
             <p>Uma obra-prima sobre poder, família e lealdade que mudou o cinema para sempre.</p>
             <img src="imagens/unnamed.png" alt="O Poderoso Chefão">
@@ -55,9 +61,8 @@
             </a>
         </div>
 
-        <!-- Filme 2 -->
         <div class="filme fade-in">
-            <h2>2. Um Sonho de Liberdade</h2>
+            <h2><a href="https://www.imdb.com/title/tt0111161/" target="_blank">2. Um Sonho de Liberdade</a></h2>
             <p><strong>Diretor:</strong> Frank Darabont • <strong>Ano:</strong> 1994</p>
             <p>A história mais emocionante sobre esperança e amizade já contada.</p>
             <img src="/imagens/um sonho libertador.png" alt="Um Sonho de Liberdade">
@@ -67,9 +72,8 @@
             </a>
         </div>
 
-        <!-- Filme 3 -->
         <div class="filme fade-in">
-            <h2>3. O Cavaleiro das Trevas</h2>
+            <h2><a href="https://www.imdb.com/title/tt0468569/" target="_blank">3. O Cavaleiro das Trevas</a></h2>
             <p><strong>Diretor:</strong> Christopher Nolan • <strong>Ano:</strong> 2008</p>
             <p>Heath Ledger como o Coringa entregou a maior performance de vilão da história.</p>
             <img src="/imagens/batman_cavaleiro_das_trevas_capa.jpg" alt="O Cavaleiro das Trevas">
@@ -79,24 +83,22 @@
             </a>
         </div>
 
-        <!-- Filme 4 -->
         <div class="filme fade-in">
-            <h2>4. A Lista de Schindler</h2>
+            <h2><a href="https://www.imdb.com/title/tt0108052/" target="_blank">4. A Lista de Schindler</a></h2>
             <p><strong>Diretor:</strong> Steven Spielberg • <strong>Ano:</strong> 1993</p>
             <p>Um dos retratos mais poderosos e necessários sobre o Holocausto já feitos.</p>
-            <img src="imagens/91-A_Lista_de_Schindler.jpg" alt="A Lista de Schindler"> <!-- ajuste o src da imagem se necessário -->
+            <img src="imagens/91-A_Lista_de_Schindler.jpg" alt="A Lista de Schindler">
             <br>
             <a href="https://www.youtube.com/watch?v=gG22XNhtnoY" target="_blank" class="btn-trailer">
                 ▶ Ver Trailer
             </a>
         </div>
 
-        <!-- Filme 5 -->
         <div class="filme fade-in">
-            <h2>5. 12 Homens e uma Sentença</h2>
+            <h2><a href="https://www.imdb.com/title/tt0050083/" target="_blank">5. 12 Homens e uma Sentença</a></h2>
             <p><strong>Diretor:</strong> Sidney Lumet • <strong>Ano:</strong> 1957</p>
             <p>Um clássico absoluto sobre justiça, preconceito e o poder da dúvida.</p>
-            <img src="imagens/DOZE-HOMENS-E-UMA-SENTENCA.jpg." alt="12 Homens e uma Sentença"> <!-- ajuste o src da imagem se necessário -->
+            <img src="imagens/DOZE-HOMENS-E-UMA-SENTENCA.jpg." alt="12 Homens e uma Sentença">
             <br>
             <a href="https://www.youtube.com/watch?v=TEN-2uTi2c0" target="_blank" class="btn-trailer">
                 ▶ Ver Trailer
@@ -105,14 +107,14 @@
 
         <h2>🌟 Outros Filmes Incríveis (Menções Honrosas)</h2>
         <ul>
-            <li>Pulp Fiction (1994)</li>
-            <li>Forrest Gump (1994)</li>
-            <li>Clube da Luta (1999)</li>
-            <li>Interestelar (2014)</li>
-            <li>Parasita (2019)</li>
-            <li>O Senhor dos Anéis: O Retorno do Rei (2003)</li>
-            <li>Matrix (1999)</li>
-            <li>La La Land (2016)</li>
+            <li><a href="https://www.imdb.com/title/tt0110912/" target="_blank">Pulp Fiction (1994)</a></li>
+            <li><a href="https://www.imdb.com/title/tt0109830/" target="_blank">Forrest Gump (1994)</a></li>
+            <li><a href="https://www.imdb.com/title/tt0137523/" target="_blank">Clube da Luta (1999)</a></li>
+            <li><a href="https://www.imdb.com/title/tt0816692/" target="_blank">Interestelar (2014)</a></li>
+            <li><a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasita (2019)</a></li>
+            <li><a href="https://www.imdb.com/title/tt0167260/" target="_blank">O Senhor dos Anéis: O Retorno do Rei (2003)</a></li>
+            <li><a href="https://www.imdb.com/title/tt0133093/" target="_blank">Matrix (1999)</a></li>
+            <li><a href="https://www.imdb.com/title/tt3783958/" target="_blank">La La Land (2016)</a></li>
         </ul>
     </div>
 
