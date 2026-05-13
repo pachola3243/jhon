@@ -4,319 +4,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Melhores Jogos por Plataforma</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            overflow-x: hidden;
-            height: 100vh;
-        }
-
-        /* Fundo do Espaço */
-        .space-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 70%),
-                radial-gradient(ellipse at top, #2C5364 0%, #203A43 70%),
-                radial-gradient(ellipse at right, #F48FB1 0%, #1B2735 70%),
-                radial-gradient(ellipse at left, #667eea 0%, #764ba2 70%);
-            background-blend-mode: screen;
-            animation: spaceMove 20s linear infinite;
-            z-index: -3;
-        }
-
-        @keyframes spaceMove {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-20px) rotate(1deg); }
-        }
-
-        /* Estrelas */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
-                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
-                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
-                radial-gradient(2px 2px at 160px 30px, #fff, transparent);
-            background-repeat: repeat;
-            background-size: 200px 100px;
-            animation: starsTwinkle 3s linear infinite;
-            z-index: -2;
-        }
-
-        @keyframes starsTwinkle {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        /* Meteoros */
-        .meteor {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
-            border-radius: 50%;
-            animation: meteorFall linear infinite;
-            z-index: -1;
-        }
-
-        .meteor::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: -10px;
-            width: 50px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4));
-            transform: rotate(-45deg);
-        }
-
-        .meteor:nth-child(1) { top: 10%; left: 10%; animation-duration: 8s; }
-        .meteor:nth-child(2) { top: 20%; left: 80%; animation-duration: 12s; animation-delay: 2s; }
-        .meteor:nth-child(3) { top: 60%; left: 20%; animation-duration: 10s; animation-delay: 5s; }
-        .meteor:nth-child(4) { top: 80%; left: 70%; animation-duration: 15s; animation-delay: 8s; }
-
-        @keyframes meteorFall {
-            0% {
-                transform: translateX(-100px) translateY(-100px) rotate(45deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(200vw) translateY(200vh) rotate(45deg);
-                opacity: 0;
-            }
-        }
-
-        /* Foguetes */
-        .rocket {
-            position: absolute;
-            width: 20px;
-            height: 40px;
-            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
-            border-radius: 10px 10px 0 0;
-            animation: rocketFly linear infinite;
-            z-index: 1;
-        }
-
-        .rocket::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-top: 15px solid #ff4757;
-            animation: rocketFlame 0.5s ease-in-out infinite alternate;
-        }
-
-        @keyframes rocketFlame {
-            0% { transform: translateX(-50%) scale(1); }
-            100% { transform: translateX(-50%) scale(1.2); }
-        }
-
-        .rocket:nth-child(5) { top: 20%; left: -30px; animation-duration: 25s; }
-        .rocket:nth-child(6) { top: 50%; left: -30px; animation-duration: 30s; animation-delay: 10s; }
-
-        @keyframes rocketFly {
-            0% {
-                transform: translateX(-50px) translateY(0) rotate(0deg);
-            }
-            100% {
-                transform: translateX(calc(100vw + 50px)) translateY(-50vh) rotate(10deg);
-            }
-        }
-
-        /* Conteúdo Principal */
-        .container {
-            position: relative;
-            z-index: 10;
-            min-height: 100vh;
-            padding: 50px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: white;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(255,255,255,0.8);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff6b6b; }
-            to { text-shadow: 0 0 20px #fff, 0 0 30px #ff6b6b, 0 0 50px #ffd93d; }
-        }
-
-        .platforms-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin-top: 50px;
-            width: 100%;
-        }
-
-        .platform-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            animation: cardSlide 1s ease-out forwards;
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        .platform-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border-color: rgba(255,255,255,0.4);
-        }
-
-        .platform-card:nth-child(1) { animation-delay: 0.2s; }
-        .platform-card:nth-child(2) { animation-delay: 0.4s; }
-        .platform-card:nth-child(3) { animation-delay: 0.6s; }
-
-        @keyframes cardSlide {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .platform-logo {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 10px currentColor);
-        }
-
-        .platform-name {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .games-list {
-            list-style: none;
-            text-align: left;
-        }
-
-        .games-list li {
-            background: rgba(255,255,255,0.05);
-            margin: 15px 0;
-            padding: 15px 20px;
-            border-radius: 10px;
-            border-left: 4px solid #ff6b6b;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .games-list li:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateX(10px);
-            border-left-color: #4ecdc4;
-        }
-
-        .games-list li::before {
-            content: '🎮 ';
-            margin-right: 10px;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .platform-logo { font-size: 3rem; }
-            .platform-name { font-size: 1.5rem; }
-            .platforms-grid { grid-template-columns: 1fr; gap: 20px; }
-        }
-    </style>
+<link rel="stylesheet" href="style.play.css">
 </head>
 <body>
-    <!-- Elementos do Espaço -->
-    <div class="space-background"></div>
-    <div class="stars"></div>
-    
-    <!-- Meteoros -->
-    <div class="meteor"></div>
-    <div class="meteor"></div>
-    <div class="meteor"></div>
-    <div class="meteor"></div>
-    
-    <!-- Foguetes -->
-    <div class="rocket"></div>
-    <div class="rocket"></div>
-
-    <!-- Conteúdo -->
     <div class="container">
-        <h1>🚀 Melhores Jogos por Plataforma</h1>
-        
-        <div class="platforms-grid">
-            <!-- XBOX -->
-            <div class="platform-card">
-                <div class="platform-logo">🟢</div>
-                <h2 class="platform-name">XBOX</h2>
-                <ul class="games-list">
-                    <li>Halo Infinite</li>
-                    <li>Forza Horizon 5</li>
-                    <li>Starfield</li>
-                    <li>Gears 5</li>
-                    <li>Sea of Thieves</li>
-                    <li>Flight Simulator 2020</li>
-                </ul>
-            </div>
+        <h1>🏆 Melhores Jogos por Plataforma</h1>
+        <p class="subtitle">Descubra os títulos imperdíveis de cada console e PC</p>
 
-            <!-- PLAYSTATION -->
-            <div class="platform-card">
-                <div class="platform-logo">🔵</div>
-                <h2 class="platform-name">PLAYSTATION</h2>
-                <ul class="games-list">
-                    <li>The Last of Us Part II</li>
-                    <li>God of War Ragnarök</li>
-                    <li>Spider-Man 2</li>
-                    <li>Horizon Forbidden West</li>
-                    <li>Ghost of Tsushima</li>
-                    <li>Gran Turismo 7</li>
-                </ul>
-            </div>
+        <div class="platforms-grid" id="platformsGrid">
+            <!-- Conteúdo será inserido via JavaScript -->
+        </div>
 
-            <!-- NINTENDO -->
-            <div class="platform-card">
-                <div class="platform-logo">🟡</div>
-                <h2 class="platform-name">NINTENDO</h2>
-                <ul class="games-list">
-                    <li>The Legend of Zelda: Tears of the Kingdom</li>
-                    <li>Super Mario Bros. Wonder</li>
-                    <li>Metroid Dread</li>
-                    <li>Super Smash Bros. Ultimate</li>
-                    <li>Animal Crossing: New Horizons</li>
-                    <li>Mario Kart 8 Deluxe</li>
-                </ul>
+        <div class="stats">
+            <div class="stat-card">
+                <span class="stat-number" id="totalGames">24</span>
+                <span class="stat-label">Jogos Listados</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">+95%</span>
+                <span class="stat-label">Avaliação Média</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">2023-2024</span>
+                <span class="stat-label">Geração Atual</span>
             </div>
         </div>
     </div>
+
+    <script>
+        const platforms = [
+            {
+                name: "PlayStation 5",
+                icon: "🟦",
+                class: "ps5",
+                games: [
+                    "God of War Ragnarök (2022)",
+                    "Spider-Man 2 (2023)",
+                    "The Last of Us Part I (2022)"
+                ]
+            },
+            {
+                name: "Xbox Series X|S",
+                icon: "🟢",
+                class: "xbox",
+                games: [
+                    "Starfield (2023)",
+                    "Forza Horizon 5 (2021)",
+                    "Halo Infinite (2021)"
+                ]
+            },
+            {
+                name: "Nintendo Switch",
+                icon: "🔴",
+                class: "switch",
+                games: [
+                    "The Legend of Zelda: Tears of the Kingdom (2023)",
+                    "Super Mario Bros. Wonder (2023)",
+                    "Metroid Dread (2021)"
+                ]
+            },
+            {
+                name: "PC Gaming",
+                icon: "💻",
+                class: "pc",
+                games: [
+                    "Baldur's Gate 3 (2023)",
+                    "Cyberpunk 2077 (2020/2023)",
+                    "Elden Ring (2022)"
+                ]
+            }
+        ];
+
+        function createPlatformCard(platform) {
+            return `
+                <div class="platform-card" onclick="expandCard(this)">
+                    <div class="platform-icon ${platform.class}">${platform.icon}</div>
+                    <h3 class="platform-name">${platform.name}</h3>
+                    <ul class="games-list">
+                        ${platform.games.map((game, index) => 
+                            `<li class="game-item" style="animation-delay: ${0.1 + index * 0.1}s">
+                                <div class="game-title">${game.split(' (')[0]}</div>
+                                <div class="game-year">${game.split(' (')[1]?.replace(')', '') || ''}</div>
+                            </li>`
+                        ).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        function initPlatforms() {
+            const grid = document.getElementById('platformsGrid');
+            grid.innerHTML = platforms.map(createPlatformCard).join('');
+        }
+
+        function expandCard(card) {
+            card.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                card.style.transform = 'translateY(-10px)';
+            }, 150);
+            
+            // Adiciona efeito de partículas
+            createParticles(card);
+        }
+
+        function createParticles(element) {
+            for(let i = 0; i < 10; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 6px;
+                    height: 6px;
+                    background: #4ecdc4;
+                    border-radius: 50%;
+                    pointer-events: none;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation: float 1s ease-out forwards;
+                `;
+                
+                element.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
+            }
+        }
+
+        // Animação CSS para partículas
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0% { transform: translateY(0) scale(1); opacity: 1; }
+                100% { transform: translateY(-50px) scale(0); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Inicializar ao carregar
+        window.addEventListener('load', initPlatforms);
+
+        // Animação de entrada dos cards
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.platform-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.8s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
 </body>
 </html>

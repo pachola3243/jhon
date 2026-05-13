@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- HUD -->
+        <div class="hud">
+            <div class="crosshair">+</div>
+            <div class="hotbar">
+                <div class="hotbar-slot active" data-slot="0"></div>
+                <div class="hotbar-slot" data-slot="1"></div>
+                <div class="hotbar-slot" data-slot="2"></div>
+                <div class="hotbar-slot" data-slot="3"></div>
+                <div class="hotbar-slot" data-slot="4"></div>
+                <div class="hotbar-slot" data-slot="5"></div>
+                <div class="hotbar-slot" data-slot="6"></div>
+                <div class="hotbar-slot" data-slot="7"></div>
+                <div class="hotbar-slot" data-slot="8"></div>
+            </div>
+        </div>
+
+        <!-- Inventário -->
+        <div class="inventory" id="inventory">
+            <div class="inventory-grid">
+                <!-- Slots do inventário serão gerados dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
